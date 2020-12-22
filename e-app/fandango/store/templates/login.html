@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+
+  <body>
+      <div class="col d-flex justify-content-center">
+
+    <div class="card" style="width: 20rem;">
+      <div class="card-header">
+        <h2>Hello.</h2>
+        <h6>Login to your Account</h6>
+      </div>
+      <div class="card-body">   
+            
+        
+        <form action="/login" method="POST">
+                
+                {% csrf_token %}
+
+                {% if error%}
+                <div class="alert alert-danger" role="alert">
+                    {{error}}
+                </div>
+                {% endif %}
+                <!-- email -->
+                <div class="form-group">
+                    <label for="">Email</label>
+                    <input required type="email" name="email" id=""
+                    value="{{values.email}}" 
+                    class=" form-control-sm form-control" placeholder="johny@example.com">
+                </div>
+
+
+                <!-- password -->
+                <div class="form-group">
+                    <label for="">Password</label>
+                    <input type="password" 
+                    name="password" 
+                    id=""
+                     class="form-control form-control-sm" placeholder="">
+                </div>
+            <small id="emailHelp" class="form-text text-muted"
+                        >New Here?</small>
+
+
+                <hr>
+                <div class="form-group">
+                    <input class="btn btn-sm btn-info col-lg-4" type="submit" value="Login">
+                </div>
+
+                
+            </form>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
